@@ -1,0 +1,87 @@
+.shadow-element {
+  position: absolute;
+  height: 100px;
+  /* Original left: -4.24% and right: 4.24% - potentially creating an offset */
+  left: -4.24%;
+  right: 4.24%;
+  top: -9px;
+}
+
+.main-box {
+  position: absolute;
+  height: 100px;
+  left: 0%;
+  right: 0%;
+  top: 0px;
+  background: #000000;
+  border-radius: 0px; /* Equivalent to a sharp-cornered rectangle */
+}
+
+---
+
+/* Frame 1 */
+.frame-one {
+  position: absolute;
+  height: 100px;
+  /* Adjusting extreme percentages for a potentially visible element */
+  left: 54.93%;
+  right: -35.49%; /* Pushes the right edge far out */
+  top: -6px;
+}
+
+/* Frame 2 */
+.frame-two {
+  position: absolute;
+  height: 40px;
+  /* Adjusting extreme percentages for a potentially visible element */
+  left: -31.47%; /* Pushes the left edge off-screen */
+  right: 42.05%;
+  /* top: calc(50% - 40px/2 + 20px) simplified to: */
+  top: calc(50% - 20px + 20px); /* which is just 50% */
+}
+
+/* Frame 3 */
+.frame-three {
+  position: absolute;
+  height: 40px;
+  left: 6.36%;
+  right: 59.89%;
+  /* top: calc(50% - 40px/2) simplified to: */
+  top: calc(50% - 20px);
+}
+
+---
+
+/* Contact Text */
+.contact-text {
+  position: absolute;
+  height: 16px;
+  left: 35.67%;
+  right: 47.84%;
+  top: 12px;
+
+  font-family: 'DM Mono', monospace; /* Added generic fallback */
+  font-style: normal;
+  font-weight: 400;
+  font-size: 36px;
+  line-height: 16px; /* A very tight line-height relative to font-size (36px) */
+
+  color: #FFFFFF;
+}
+
+/* Evolution Game Title */
+.evolution-title {
+  position: absolute;
+  width: 752px;
+  height: 51px;
+  left: 105px;
+  top: 44px;
+
+  font-family: 'Diphylleia', serif; /* Added generic fallback */
+  font-style: normal;
+  font-weight: 400;
+  font-size: 70px;
+  line-height: 16px; /* A very tight line-height relative to font-size (70px) */
+
+  color: #FFFFFF;
+}
