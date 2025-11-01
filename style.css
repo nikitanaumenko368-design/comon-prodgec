@@ -1,66 +1,284 @@
-.shadow-element {
-  position: absolute;
-  height: 100px;
-  left: -4.24%;
-  right: 4.24%;
-  top: -9px;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.main-box {
-  position: absolute;
-  height: 100px;
-  left: 0%;
-  right: 0%;
-  top: 0px;
-  background: #000000;
-  border-radius: 0px; 
+body {
+    font-family: Arial, sans-serif;
+    background-color: #000; 
+    color: #fff; 
+    line-height: 1.6;
 }
-.frame-one {
-  position: absolute;
-  height: 100px;
-  left: 54.93%;
-  right: -35.49%;
-  top: -6px;
-}
-.frame-two {
-  position: absolute;
-  height: 40px;
-  left: -31.47%;
-  right: 42.05%;
-    top: calc(50% - 20px + 20px); 
-}
-.frame-three {
-  position: absolute;
-  height: 40px;
-  left: 6.36%;
-  right: 59.89%;
-  top: calc(50% - 20px);
-}
-.contact-text {
-  position: absolute;
-  height: 16px;
-  left: 35.67%;
-  right: 47.84%;
-  top: 12px;
 
-  font-family: 'DM Mono', monospace;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 36px;
-  line-height: 16px; 
-
-  color: #FFFFFF;
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
 }
-.evolution-title {
-  position: absolute;
-  width: 752px;
-  height: 51px;
-  left: 105px;
-  top: 44px;
- font-family: 'Diphylleia', serif; 
-  font-style: normal;
-  font-weight: 400;
-  font-size: 70px;
-  line-height: 16px; 
-  color: #FFFFFF;
+
+
+.header {
+    padding: 20px 0;
+}
+
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.nav a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 20px;
+    transition: color 0.3s;
+}
+
+.nav a:hover {
+    color: #e50000; 
+}
+
+
+.top-section {
+    padding: 40px 0;
+    text-align: center;
+}
+
+.subtitle {
+    font-size: 14px;
+    color: #aaa;
+    margin-bottom: 5px;
+}
+
+.section-title-top {
+    font-size: 36px;
+    color: #e50000;
+    margin-bottom: 20px;
+}
+
+.featured-games {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 40px;
+}
+
+.game-card {
+    position: relative;
+    width: 250px; 
+    height: 350px;
+    background-color: #222;
+    overflow: hidden;
+    border-radius: 5px;
+}
+
+.game-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.buy-btn {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #e50000;
+    color: #fff;
+    padding: 8px 15px;
+    border-radius: 3px;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.promo-text {
+    font-size: 30px;
+    color: #fff;
+    margin-bottom: 40px;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+}
+
+.highlight {
+    color: #e50000;
+    font-weight: bold;
+}
+
+
+.top-games-section {
+    padding: 40px 0;
+    text-align: center;
+}
+
+.section-title {
+    font-size: 24px;
+    color: #e50000; 
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 30px;
+    display: flex; 
+    justify-content: center;
+    gap: 10px;
+}
+
+.section-title::before {
+    content: "ТОП";
+    color: #fff;
+}
+
+.top-games-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); 
+    gap: 20px;
+}
+
+.game-item {
+    background-color: #111;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.game-item:hover {
+    transform: translateY(-5px);
+}
+
+.item-img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1/1.4; 
+    object-fit: cover;
+    border-radius: 3px;
+    margin-bottom: 5px;
+}
+
+.price {
+    color: #e50000;
+    font-weight: bold;
+}
+
+
+.search-section {
+    padding: 50px 0;
+    text-align: center;
+}
+
+.search-section .section-title {
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.search-box {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+#searchInput {
+    width: 50%;
+    max-width: 600px;
+    padding: 15px 20px;
+    background-color: #fff;
+    border: none;
+    font-size: 16px;
+    border-radius: 5px 0 0 5px;
+}
+
+.search-btn {
+    padding: 15px 30px;
+    background-color: #e50000;
+    color: #fff;
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 0 5px 5px 0;
+    text-transform: uppercase;
+    transition: background-color 0.3s;
+}
+
+.search-btn:hover {
+    background-color: #ff3333;
+}
+
+.search-results-area {
+    min-height: 200px;
+    background-color: #333; 
+    border: 2px solid #00c0ff; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+.search-placeholder {
+    color: #aaa;
+    font-style: italic;
+    text-align: center;
+    padding: 20px;
+}
+
+
+.catalog-section {
+    padding: 50px 0;
+    text-align: center;
+}
+
+.catalog-title {
+    color: #fff;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+.catalog-title::before {
+    content: "КОТО";
+    color: #e50000; /
+}
+.catalog-title::after {
+    content: "ЛОГ";
+    color: #e50000; 
+}
+
+
+.catalog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+}
+
+.catalog-item {
+    background-color: #1a1a1a; 
+    min-height: 200px;
+    border-radius: 5px;
+    border: 1px solid #000; 
+}
+
+/* --- Футер --- */
+.footer {
+    padding: 20px 0;
+    border-top: 1px solid #333;
+    font-size: 14px;
+}
+
+.footer .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
