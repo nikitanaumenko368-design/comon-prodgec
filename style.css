@@ -34,6 +34,16 @@ body {
     cursor: url(https://cdn.custom-cursor.com/db/7518/maze-cursor.png) 16 16, auto;
 }
 
+cursor-default {
+    font-weight: 8px;
+    height: 10px;
+}
+
+cursor-pointer {
+    font-weight: 8px;
+    height: 10px;
+}
+
 .container {
     width: 90%;
     max-width: 1400px;
