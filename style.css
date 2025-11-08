@@ -6,11 +6,10 @@
     --color-card-background: #363437;
     --color-catalog-placeholder: rgba(217, 217, 217, 0.3);
     --color-game-card: #222;
-    --cursor-pointer: url('starter-northern-lights-pointer.png'), pointer; /* Зображення для кліку */
-    --cursor-default: url('starter-northern-lights-pack.png'), auto; /* Зображення для звичайного курсора */
+    --cursor-pointer: url('https://cdn.custom-cursor.com/db/7517/maze-pointer.png'), pointer;
+    --cursor-default: url('https://cdn.custom-cursor.com/db/7518/maze-cursor.png'), auto;
 }
 
-/* ЗАГАЛЬНІ СТИЛІ */
 .logo, .footer-logo { font-family: 'Audiowide', cursive; }
 .nav a, .game-title, .game-price, .footer-credits, .footer-links a, .copyright { font-family: 'DM Mono', monospace; }
 .subtitle, .for-buying { font-family: 'DM Mono', monospace; }
@@ -32,8 +31,7 @@ body {
     color: var(--color-text-light);
     line-height: 1.6;
     min-width: 320px;
-    /* Спеціальний курсор */
-    cursor: var(--cursor-default);
+    cursor: url(https://cdn.custom-cursor.com/db/7518/maze-cursor.png) 16 16, auto;
 }
 
 .container {
@@ -43,13 +41,11 @@ body {
     padding: 20px 0;
 }
 
-/* Ефекти курсора */
 a:hover, button:hover, .game-card:hover, .catalog-item:hover {
     cursor: var(--cursor-pointer);
 }
 
 
-/* HEADER */
 .header {
     background-color: var(--color-background);
     padding: 10px 0;
@@ -73,20 +69,19 @@ a:hover, button:hover, .game-card:hover, .catalog-item:hover {
     text-decoration: none;
     font-size: 18px;
     padding: 5px 10px;
-    transition: color 0.3s, transform 0.1s; /* Додано transform для анімації */
+    transition: color 0.3s, transform 0.1s;
     text-transform: uppercase;
 }
 
 .nav a:hover {
     color: var(--color-text-red);
-    transform: translateY(-2px); /* Анімація підняття */
+    transform: translateY(-2px);
 }
 
 .nav a:active {
-    transform: translateY(1px); /* Анімація натискання */
+    transform: translateY(1px);
 }
 
-/* HERO SECTION */
 .hero-section {
     padding: 40px 0;
     text-align: center;
@@ -123,12 +118,12 @@ a:hover, button:hover, .game-card:hover, .catalog-item:hover {
     overflow: hidden;
     position: relative;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Додано transition для тіні */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .hero-game-card:hover {
     transform: scale(1.05);
-    box-shadow: 0 0 30px rgba(255, 0, 0, 0.7); /* Ефект світіння */
+    box-shadow: 0 0 30px rgba(255, 0, 0, 0.7);
 }
 
 .hero-game-card.featured {
@@ -162,11 +157,11 @@ a:hover, button:hover, .game-card:hover, .catalog-item:hover {
 
 .btn-buy:hover {
     background-color: #ff3333;
-    transform: translateX(-50%) scale(1.05); /* Ефект збільшення */
+    transform: translateX(-50%) scale(1.05);
 }
 
 .btn-buy:active {
-    transform: translateX(-50%) scale(0.95); /* Ефект натискання */
+    transform: translateX(-50%) scale(0.95);
 }
 
 .quote {
@@ -184,7 +179,6 @@ a:hover, button:hover, .game-card:hover, .catalog-item:hover {
     color: var(--color-text-red);
 }
 
-/* TOP GAMES SECTION */
 .top-games-section {
     padding: 40px 0;
 }
@@ -261,10 +255,9 @@ a:hover, button:hover, .game-card:hover, .catalog-item:hover {
     color: var(--color-text-red);
 }
 .white-text {
-    color: var(--color-text-light); /* Виправлено: була помилка в оригіналі: 'var(--color-text- white)' */
+    color: var(--color-text-light);
 }
 
-/* SEARCH BLOCK */
 .search-block {
     text-align: center;
     margin: 80px 0 30px 0;
@@ -293,7 +286,7 @@ a:hover, button:hover, .game-card:hover, .catalog-item:hover {
 }
 
 .search-field:focus-within {
-    box-shadow: 0 0 20px var(--color-text-red); /* Світіння при фокусі */
+    box-shadow: 0 0 20px var(--color-text-red);
 }
 
 .search-field input {
@@ -306,7 +299,6 @@ a:hover, button:hover, .game-card:hover, .catalog-item:hover {
     text-align: center;
     width: 100%;
     outline: none;
-    /* Видалено стилі для #gameSearchInput з нижньої частини CSS, щоб уникнути конфлікту */
 }
 
 .search-field input::placeholder {
@@ -314,7 +306,6 @@ a:hover, button:hover, .game-card:hover, .catalog-item:hover {
     opacity: 0.5;
 }
 
-/* Результати пошуку - уніфікований контейнер */
 .search-results-placeholder {
     min-height: 400px; 
     background-color: var(--color-catalog-placeholder);
@@ -322,11 +313,10 @@ a:hover, button:hover, .game-card:hover, .catalog-item:hover {
     margin: 40px auto;
     width: 100%;
     display: flex;
-    flex-direction: column; /* Змінено на column для коректного відображення елементів */
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 20px;
-    /* Змінено display на flex для початкового стану */
 }
 
 .search-results-placeholder .placeholder-text {
@@ -368,7 +358,6 @@ a:hover, button:hover, .game-card:hover, .catalog-item:hover {
     font-size: 16px;
 }
 
-/* CATALOG SECTION */
 .catalog-section {
     padding: 40px 0;
 }
@@ -412,7 +401,7 @@ a:hover, button:hover, .game-card:hover, .catalog-item:hover {
 }
 
 .catalog-item:hover {
-    transform: scale(1.05) rotate(1deg); /* Анімація повороту і збільшення */
+    transform: scale(1.05) rotate(1deg);
 }
 .catalog-item:active {
     transform: scale(0.98);
@@ -431,7 +420,6 @@ a:hover, button:hover, .game-card:hover, .catalog-item:hover {
     opacity: 0.8;
 }
 
-/* FOOTER */
 .footer {
     background-color: var(--color-card-background);
     padding: 40px 0;
@@ -486,7 +474,7 @@ a:hover, button:hover, .game-card:hover, .catalog-item:hover {
     width: 36px;
     height: 36px;
     background-color: var(--color-text-red); 
-    border-radius: 50%; /* Зробив іконки круглими */
+    border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -518,7 +506,6 @@ a:hover, button:hover, .game-card:hover, .catalog-item:hover {
     margin-right: 5px;
 }
 
-/* MEDIA QUERIES */
 @media (max-width: 1200px) {
     .top-games-header, .catalog-header-grid {
         grid-template-columns: repeat(4, 1fr);
