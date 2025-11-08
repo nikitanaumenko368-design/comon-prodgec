@@ -8,10 +8,9 @@
     --color-game-card: #222;
 }
 
-/* Спільні шрифти (з першої версії) */
-.logo, .footer-logo { font-family: 'Audiowide', cursive; } /* Змінено для узгодженості з заголовками */
+.logo, .footer-logo { font-family: 'Audiowide', cursive; }
 .nav a, .game-title, .game-price, .footer-credits, .footer-links a, .copyright { font-family: 'DM Mono', monospace; }
-.subtitle, .for-buying { font-family: 'DM Mono', monospace; } /* Змінено на DM Mono для мінімалізму */
+.subtitle, .for-buying { font-family: 'DM Mono', monospace; }
 .section-title { font-family: 'Audiowide', cursive; }
 .quote { font-family: 'Black Ops One', cursive; }
 .top-label, .catalog-label, .search-label { font-family: 'Audiowide', cursive; }
@@ -61,7 +60,7 @@ body {
 .nav a {
     color: var(--color-text-light);
     text-decoration: none;
-    font-size: 18px; /* Зменшено для кращої адаптивності */
+    font-size: 18px;
     padding: 5px 10px;
     transition: color 0.3s;
     text-transform: uppercase;
@@ -148,7 +147,6 @@ body {
     background-color: #ff3333;
 }
 
-/* QUOTE / PROMO TEXT */
 .quote {
     font-family: 'Black Ops One', cursive;
     color: #373636;
@@ -164,7 +162,6 @@ body {
     color: var(--color-text-red);
 }
 
-/* TOP GAMES SECTION */
 .top-games-section {
     padding: 40px 0;
 }
@@ -174,7 +171,7 @@ body {
     grid-template-columns: repeat(6, 1fr);
     gap: 10px;
     margin-bottom: 10px;
-    overflow: hidden; /* Обмеження заголовка */
+    overflow: hidden;
 }
 
 .top-label {
@@ -215,7 +212,7 @@ body {
 .game-card .game-cover {
     width: 100%;
     height: auto;
-    aspect-ratio: 3/4; /* Співвідношення сторін для обкладинок */
+    aspect-ratio: 3/4;
     object-fit: cover;
     border-radius: 5px 5px 0 0; 
 }
@@ -237,7 +234,6 @@ body {
     color: var(--color-text-red);
 }
 
-/* SEARCH BLOCK */
 .search-block {
     text-align: center;
     margin: 80px 0 30px 0;
@@ -301,7 +297,6 @@ body {
     line-height: 1.1;
 }
 
-/* CATALOG SECTION */
 .catalog-section {
     padding: 40px 0;
 }
@@ -336,7 +331,7 @@ body {
 }
 
 .catalog-item {
-    background-color: var(--color-game-card); /* Змінено з #D9D9D9 */
+    background-color: var(--color-game-card);
     border-radius: 55px;
     height: 567px; 
     overflow: hidden;
@@ -356,7 +351,6 @@ body {
     opacity: 0.8;
 }
 
-/* FOOTER */
 .footer {
     background-color: var(--color-card-background);
     padding: 40px 0;
@@ -403,13 +397,13 @@ body {
 .social-links {
     display: flex;
     gap: 10px;
-    margin-top: 10px; /* Додано для адаптивності */
+    margin-top: 10px;
 }
 
 .social-icon-box {
     width: 36px;
     height: 36px;
-    background-color: var(--color-text-red); /* Змінено на червоний */
+    background-color: var(--color-text-red);
     border-radius: 0;
     display: flex;
     justify-content: center;
@@ -437,8 +431,6 @@ body {
     margin-right: 5px;
 }
 
-
-/* MEDIA QUERIES */
 @media (max-width: 1200px) {
     .top-games-header, .catalog-header-grid {
         grid-template-columns: repeat(4, 1fr);
@@ -448,7 +440,7 @@ body {
         grid-column: span 1;
     }
     .top-games-grid {
-        grid-template-columns: repeat(2, 1fr); /* Зменшено до 2 колонок */
+        grid-template-columns: repeat(2, 1fr);
     }
     .game-card {
         grid-column: span 1;
@@ -481,7 +473,7 @@ body {
         align-items: center;
     }
     .hero-game-card {
-        width: 80%; /* Збільшено розмір на мобільних */
+        width: 80%;
         max-width: 400px;
     }
     .quote {
