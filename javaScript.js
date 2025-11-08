@@ -1,73 +1,84 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const searchInput = document.getElementById('searchInput');
-    const searchButton = document.getElementById('searchButton');
-    const searchResultsDiv = document.getElementById('searchResults');
-    const searchPlaceholder = document.querySelector('.search-placeholder');
-
+const gameCatalogue = [
+    { title: "Indiana Jones and the great circle", price: "58,69$", tags: ["action", "adventure", "new"] },
+    { title: "Nine Souls", price: "14,67$", tags: ["indie", "platformer"] },
+    { title: "The Elder Scrolls IV Oblivion Remastered", price: "43,12$", tags: ["rpg", "fantasy", "classic"] },
+    { title: "Assassin’s Creed Shadows", price: "47,91$", tags: ["action", "stealth", "new"] },
+    { title: "Subnautica", price: "19,16$", tags: ["survival", "adventure", "indie"] },
+    { title: "S.T.A.L.K.E.R. 2", price: "33,54$", tags: ["shooter", "survival", "horror"] },
+    { title: "Cyberpunk 2077", price: "33,54$", tags: ["rpg", "openworld", "scifi"] },
+    { title: "Stray", price: "14,37$", tags: ["indie", "adventure"] },
     
-    const allGames = [
-        { id: 1, title: "DOOM Eternal", price: "59.99$", tags: ["fps", "action", "top"] },
-        { id: 2, title: "Red Dead Redemption II", price: "49.99$", tags: ["adventure", "openworld", "top"] },
-        { id: 3, title: "S.T.A.L.K.E.R. 2", price: "69.99$", tags: ["shooter", "survival"] },
-        { id: 4, title: "The Elder Scrolls IV: Oblivion", price: "9.99$", tags: ["rpg", "classic"] },
-        { id: 5, title: "Stray", price: "29.99$", tags: ["indie", "adventure"] },
-        { id: 6, title: "Subnautica", price: "19.99$", tags: ["survival", "adventure"] }
-        
-    ];
+    { title: "GTA VI", price: "79,99$", tags: ["action", "openworld"] },
+    { title: "GTA V", price: "29,99$", tags: ["action", "openworld"] },
+    { title: "Red Dead Redemption 2", price: "49,99$", tags: ["action", "openworld", "western"] },
+    { title: "Elden Ring", price: "59,99$", tags: ["rpg", "soulslike", "fantasy"] },
+    { title: "Halo", price: "39.99$", tags: ["fps", "scifi"] },
+    { title: "God of War", price: "49.99$", tags: ["action", "adventure"] },
+    { title: "The Witcher 3", price: "19.99$", tags: ["rpg", "fantasy"] },
+    { title: "Forza Horizon 3", price: "19.99$", tags: ["racing", "simulation"] },
+    { title: "Minecraft", price: "26.95$", tags: ["sandbox", "survival"] },
+    { title: "Dying Light", price: "14.99$", tags: ["action", "horror", "survival"] },
+    { title: "Horizon Zero Dawn", price: "29.99$", tags: ["action", "rpg", "openworld"] }
+];
 
-    
-    function displayResults(results) {
-        searchResultsDiv.innerHTML = ''; 
+const resultsContainer = document.getElementById('gameResultsContainer');
+const initialPlaceholder = document.getElementById('initialPlaceholder');
 
-        if (results.length === 0) {
-            searchResultsDiv.innerHTML = '<p class="search-placeholder">Нічого не знайдено. Спробуйте інший запит.</p>';
-            searchPlaceholder.style.display = 'none';
-            return;
-        }
+/**
+ * @param {Array<Object>} results
+ */
+function renderResults(results) {
+    resultsContainer.innerHTML = '';
 
-        searchPlaceholder.style.display = 'none'; 
-
-        
+    if (results.length === 0) {
+        const noResults = document.createElement('p');
+        noResults.classList.add('placeholder-text');
+        noResults.style.fontSize = '32px';
+        noResults.textContent = 'НІЧОГО НЕ ЗНАЙДЕНО';
+        resultsContainer.appendChild(noResults);
+        resultsContainer.style.justifyContent = 'center';
+    } else {
         results.forEach(game => {
             const gameElement = document.createElement('div');
             gameElement.classList.add('search-result-item');
             gameElement.innerHTML = `
-                <h4>${game.title}</h4>
-                <p>Ціна: ${game.price}</p>
+                <h4>${game.title.toUpperCase()}</h4>
+                <p>Ціна: <span class="red-text">${game.price}</span></p>
                 <p class="tags">Теги: ${game.tags.join(', ')}</p>
             `;
-            searchResultsDiv.appendChild(gameElement);
+            resultsContainer.appendChild(gameElement);
         });
-
-        
-        searchResultsDiv.style.display = 'grid';
-        searchResultsDiv.style.gridTemplateColumns = 'repeat(auto-fit, minmax(200px, 1fr))';
-        searchResultsDiv.style.gap = '15px';
-        searchResultsDiv.style.padding = '15px';
+        resultsContainer.style.justifyContent = 'flex-start';
     }
+}
 
+function filterGames() {
+    const inputElement = document.getElementById('gameSearchInput');
+    const filterText = inputElement.value.trim().toUpperCase();
+
+    if (filterText === '') {
+        resultsContainer.innerHTML = '';
+        resultsContainer.appendChild(initialPlaceholder);
+        initialPlaceholder.style.display = 'block';
+        resultsContainer.style.justifyContent = 'center';
+        return;
+    }
     
-    function handleSearch() {
-        const query = searchInput.value.trim().toLowerCase();
-
-        if (query === '') {
-            searchPlaceholder.style.display = 'block';
-            searchResultsDiv.style.display = 'block';
-            searchResultsDiv.innerHTML = '';
-            return;
-        }
-
-        const filteredGames = allGames.filter(game =>
-            game.title.toLowerCase().includes(query) ||
-            game.tags.some(tag => tag.includes(query))
-        );
-
-        displayResults(filteredGames);
+    if (initialPlaceholder) {
+        initialPlaceholder.style.display = 'none';
     }
-    searchButton.addEventListener('click', handleSearch);
-    searchInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') {
-            handleSearch();
-        }
+
+    const filteredList = gameCatalogue.filter(game => {
+        return game.title.toUpperCase().includes(filterText) ||
+               game.tags.some(tag => tag.toUpperCase().includes(filterText));
     });
+
+    renderResults(filteredList);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const searchInput = document.getElementById('gameSearchInput');
+    if (searchInput) {
+        searchInput.addEventListener('keyup', filterGames);
+    }
 });

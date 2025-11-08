@@ -6,8 +6,11 @@
     --color-card-background: #363437;
     --color-catalog-placeholder: rgba(217, 217, 217, 0.3);
     --color-game-card: #222;
+    --cursor-pointer: url('starter-northern-lights-pointer.png'), pointer; /* Зображення для кліку */
+    --cursor-default: url('starter-northern-lights-pack.png'), auto; /* Зображення для звичайного курсора */
 }
 
+/* ЗАГАЛЬНІ СТИЛІ */
 .logo, .footer-logo { font-family: 'Audiowide', cursive; }
 .nav a, .game-title, .game-price, .footer-credits, .footer-links a, .copyright { font-family: 'DM Mono', monospace; }
 .subtitle, .for-buying { font-family: 'DM Mono', monospace; }
@@ -29,6 +32,8 @@ body {
     color: var(--color-text-light);
     line-height: 1.6;
     min-width: 320px;
+    /* Спеціальний курсор */
+    cursor: var(--cursor-default);
 }
 
 .container {
@@ -37,6 +42,12 @@ body {
     margin: 0 auto;
     padding: 20px 0;
 }
+
+/* Ефекти курсора */
+a:hover, button:hover, .game-card:hover, .catalog-item:hover {
+    cursor: var(--cursor-pointer);
+}
+
 
 /* HEADER */
 .header {
@@ -62,12 +73,17 @@ body {
     text-decoration: none;
     font-size: 18px;
     padding: 5px 10px;
-    transition: color 0.3s;
+    transition: color 0.3s, transform 0.1s; /* Додано transform для анімації */
     text-transform: uppercase;
 }
 
 .nav a:hover {
     color: var(--color-text-red);
+    transform: translateY(-2px); /* Анімація підняття */
+}
+
+.nav a:active {
+    transform: translateY(1px); /* Анімація натискання */
 }
 
 /* HERO SECTION */
@@ -107,11 +123,12 @@ body {
     overflow: hidden;
     position: relative;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Додано transition для тіні */
 }
 
 .hero-game-card:hover {
     transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(255, 0, 0, 0.7); /* Ефект світіння */
 }
 
 .hero-game-card.featured {
@@ -140,11 +157,16 @@ body {
     font-weight: 400;
     font-family: 'DM Mono', monospace;
     text-transform: uppercase;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, transform 0.1s;
 }
 
 .btn-buy:hover {
     background-color: #ff3333;
+    transform: translateX(-50%) scale(1.05); /* Ефект збільшення */
+}
+
+.btn-buy:active {
+    transform: translateX(-50%) scale(0.95); /* Ефект натискання */
 }
 
 .quote {
@@ -162,6 +184,7 @@ body {
     color: var(--color-text-red);
 }
 
+/* TOP GAMES SECTION */
 .top-games-section {
     padding: 40px 0;
 }
@@ -202,11 +225,15 @@ body {
     align-items: center;
     text-align: center;
     gap: 5px;
-    transition: box-shadow 0.3s ease;
+    transition: box-shadow 0.3s ease, transform 0.2s ease;
 }
 
 .game-card:hover {
-    box-shadow: 0 0 10px var(--color-text-red);
+    box-shadow: 0 0 15px var(--color-text-red);
+    transform: scale(1.03);
+}
+.game-card:active {
+    transform: scale(0.98);
 }
 
 .game-card .game-cover {
@@ -233,7 +260,11 @@ body {
 .red-text {
     color: var(--color-text-red);
 }
+.white-text {
+    color: var(--color-text-light); /* Виправлено: була помилка в оригіналі: 'var(--color-text- white)' */
+}
 
+/* SEARCH BLOCK */
 .search-block {
     text-align: center;
     margin: 80px 0 30px 0;
@@ -257,6 +288,12 @@ body {
     width: 100%;
     max-width: 1391px;
     margin: 0 auto;
+    box-shadow: 0 0 0px var(--color-text-red);
+    transition: box-shadow 0.3s ease;
+}
+
+.search-field:focus-within {
+    box-shadow: 0 0 20px var(--color-text-red); /* Світіння при фокусі */
 }
 
 .search-field input {
@@ -269,6 +306,7 @@ body {
     text-align: center;
     width: 100%;
     outline: none;
+    /* Видалено стилі для #gameSearchInput з нижньої частини CSS, щоб уникнути конфлікту */
 }
 
 .search-field input::placeholder {
@@ -276,6 +314,7 @@ body {
     opacity: 0.5;
 }
 
+/* Результати пошуку - уніфікований контейнер */
 .search-results-placeholder {
     min-height: 400px; 
     background-color: var(--color-catalog-placeholder);
@@ -283,8 +322,11 @@ body {
     margin: 40px auto;
     width: 100%;
     display: flex;
+    flex-direction: column; /* Змінено на column для коректного відображення елементів */
     justify-content: center;
     align-items: center;
+    padding: 20px;
+    /* Змінено display на flex для початкового стану */
 }
 
 .search-results-placeholder .placeholder-text {
@@ -297,6 +339,36 @@ body {
     line-height: 1.1;
 }
 
+.search-result-item {
+    background-color: var(--color-game-card);
+    border: 1px solid var(--color-text-red);
+    padding: 20px;
+    margin: 10px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 800px;
+    text-align: left;
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.search-result-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(255, 0, 0, 0.4);
+}
+
+.search-result-item h4 {
+    color: var(--color-text-red);
+    font-family: 'Audiowide', cursive;
+    margin-bottom: 5px;
+    font-size: 24px;
+}
+
+.search-result-item p {
+    font-family: 'DM Mono', monospace;
+    font-size: 16px;
+}
+
+/* CATALOG SECTION */
 .catalog-section {
     padding: 40px 0;
 }
@@ -336,6 +408,14 @@ body {
     height: 567px; 
     overflow: hidden;
     position: relative;
+    transition: transform 0.3s ease;
+}
+
+.catalog-item:hover {
+    transform: scale(1.05) rotate(1deg); /* Анімація повороту і збільшення */
+}
+.catalog-item:active {
+    transform: scale(0.98);
 }
 
 .catalog-item .item-img {
@@ -351,6 +431,7 @@ body {
     opacity: 0.8;
 }
 
+/* FOOTER */
 .footer {
     background-color: var(--color-card-background);
     padding: 40px 0;
@@ -388,34 +469,40 @@ body {
     font-size: 16px;
     color: #FFFFFF;
     text-decoration: none;
-    transition: color 0.3s;
+    transition: color 0.3s, transform 0.1s;
 }
 .footer-links a:hover {
     color: var(--color-text-red);
+    transform: translateX(5px);
 }
 
 .social-links {
     display: flex;
     gap: 10px;
-    margin-top: 10px;
+    margin-top: 10px; 
 }
 
 .social-icon-box {
     width: 36px;
     height: 36px;
-    background-color: var(--color-text-red);
-    border-radius: 0;
+    background-color: var(--color-text-red); 
+    border-radius: 50%; /* Зробив іконки круглими */
     display: flex;
     justify-content: center;
     align-items: center;
     color: #000000;
     font-size: 18px;
     text-decoration: none;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, transform 0.2s;
 }
 
 .social-icon-box:hover {
     background-color: #FFFFFF;
+    color: var(--color-text-red);
+    transform: scale(1.1);
+}
+.social-icon-box:active {
+    transform: scale(0.9);
 }
 
 .footer-credits {
@@ -431,6 +518,7 @@ body {
     margin-right: 5px;
 }
 
+/* MEDIA QUERIES */
 @media (max-width: 1200px) {
     .top-games-header, .catalog-header-grid {
         grid-template-columns: repeat(4, 1fr);
@@ -440,7 +528,7 @@ body {
         grid-column: span 1;
     }
     .top-games-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr); 
     }
     .game-card {
         grid-column: span 1;
@@ -451,7 +539,13 @@ body {
     .search-label {
         font-size: 50px;
     }
+    .search-field {
+        height: 90px;
+    }
     .search-field input, .search-results-placeholder .placeholder-text {
+        font-size: 40px;
+    }
+    .search-results-placeholder .placeholder-text {
         font-size: 40px;
     }
 }
@@ -492,14 +586,19 @@ body {
     }
     .search-field {
         height: 60px;
+        border-radius: 30px;
     }
-    .search-field input, .search-results-placeholder .placeholder-text {
+    .search-field input {
         font-size: 20px;
         padding: 0 10px;
     }
     .search-results-placeholder {
         border-radius: 30px;
         min-height: 200px;
+    }
+    .search-results-placeholder .placeholder-text {
+        font-size: 20px;
+        padding: 20px;
     }
     .top-games-grid, .catalog-grid {
         grid-template-columns: 1fr;
