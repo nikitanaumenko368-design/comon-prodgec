@@ -15,8 +15,7 @@
 .subtitle, .for-buying { font-family: 'DM Mono', monospace; }
 .section-title { font-family: 'Audiowide', cursive; }
 .quote { font-family: 'Black Ops One', cursive; }
-.top-label, .catalog-label, .search-label { font-family: 'Audiowide', cursive; }
-.search-field input { font-family: 'Audiowide', cursive; }
+.top-label, .catalog-label { font-family: 'Audiowide', cursive; }
 
 
 * {
@@ -32,16 +31,6 @@ body {
     line-height: 1.6;
     min-width: 320px;
     cursor: url(https://cdn.custom-cursor.com/db/7518/maze-cursor.png) 16 16, auto;
-}
-
-cursor-default {
-    font-weight: 8px;
-    height: 10px;
-}
-
-cursor-pointer {
-    font-weight: 8px;
-    height: 10px;
 }
 
 .container {
@@ -267,107 +256,6 @@ a:hover, button:hover, .game-card:hover, .catalog-item:hover {
 .white-text {
     color: var(--color-text-light);
 }
-
-.search-block {
-    text-align: center;
-    margin: 80px 0 30px 0;
-}
-
-.search-label {
-    font-size: 79px; 
-    font-weight: 400;
-    text-transform: uppercase;
-    margin-bottom: 20px;
-    line-height: 1.1;
-}
-
-.search-field {
-    background-color: var(--color-text-light);
-    border-radius: 66px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 116px;
-    width: 100%;
-    max-width: 1391px;
-    margin: 0 auto;
-    box-shadow: 0 0 0px var(--color-text-red);
-    transition: box-shadow 0.3s ease;
-}
-
-.search-field:focus-within {
-    box-shadow: 0 0 20px var(--color-text-red);
-}
-
-.search-field input {
-    background: none;
-    border: none;
-    color: #000000;
-    font-size: 79px;
-    text-transform: uppercase;
-    padding: 0 40px;
-    text-align: center;
-    width: 100%;
-    outline: none;
-}
-
-.search-field input::placeholder {
-    color: var(--color-placeholder);
-    opacity: 0.5;
-}
-
-.search-results-placeholder {
-    min-height: 400px; 
-    background-color: var(--color-catalog-placeholder);
-    border-radius: 79px;
-    margin: 40px auto;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-}
-
-.search-results-placeholder .placeholder-text {
-    color: var(--color-text-light); 
-    font-family: 'Audiowide', cursive;
-    font-size: 79px; 
-    text-transform: uppercase;
-    text-align: center;
-    padding: 50px;
-    line-height: 1.1;
-}
-
-.search-result-item {
-    background-color: var(--color-game-card);
-    border: 1px solid var(--color-text-red);
-    padding: 20px;
-    margin: 10px;
-    border-radius: 10px;
-    width: 100%;
-    max-width: 800px;
-    text-align: left;
-    transition: transform 0.2s ease, box-shadow 0.3s ease;
-}
-
-.search-result-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(255, 0, 0, 0.4);
-}
-
-.search-result-item h4 {
-    color: var(--color-text-red);
-    font-family: 'Audiowide', cursive;
-    margin-bottom: 5px;
-    font-size: 24px;
-}
-
-.search-result-item p {
-    font-family: 'DM Mono', monospace;
-    font-size: 16px;
-}
-
 .catalog-section {
     padding: 40px 0;
 }
@@ -533,18 +421,6 @@ a:hover, button:hover, .game-card:hover, .catalog-item:hover {
     .catalog-grid {
         grid-template-columns: repeat(2, 1fr);
     }
-    .search-label {
-        font-size: 50px;
-    }
-    .search-field {
-        height: 90px;
-    }
-    .search-field input, .search-results-placeholder .placeholder-text {
-        font-size: 40px;
-    }
-    .search-results-placeholder .placeholder-text {
-        font-size: 40px;
-    }
 }
 
 @media (max-width: 768px) {
@@ -578,25 +454,6 @@ a:hover, button:hover, .game-card:hover, .catalog-item:hover {
     .top-label, .catalog-label {
         font-size: 24px;
     }
-    .search-label {
-        font-size: 32px;
-    }
-    .search-field {
-        height: 60px;
-        border-radius: 30px;
-    }
-    .search-field input {
-        font-size: 20px;
-        padding: 0 10px;
-    }
-    .search-results-placeholder {
-        border-radius: 30px;
-        min-height: 200px;
-    }
-    .search-results-placeholder .placeholder-text {
-        font-size: 20px;
-        padding: 20px;
-    }
     .top-games-grid, .catalog-grid {
         grid-template-columns: 1fr;
     }
@@ -617,5 +474,124 @@ a:hover, button:hover, .game-card:hover, .catalog-item:hover {
     .footer-credits {
         order: 4;
         text-align: center;
+    }
+}
+
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1000; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0, 0, 0, 0.9);
+    padding-top: 50px;
+}
+
+.modal-content {
+    background-color: var(--color-game-card);
+    margin: 10% auto;
+    padding: 20px;
+    border: 3px solid var(--color-text-red);
+    width: 90%; 
+    max-width: 900px;
+    border-radius: 15px;
+    position: relative;
+    box-shadow: 0 0 30px rgba(255, 0, 0, 0.5);
+    animation: fadeIn 0.5s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-50px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.close-btn {
+    color: var(--color-text-red);
+    float: right;
+    font-size: 36px;
+    font-weight: bold;
+    transition: color 0.2s;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: #fff;
+    text-decoration: none;
+    cursor: var(--cursor-pointer);
+    transform: scale(1.1);
+}
+
+.modal-body {
+    display: flex;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.modal-game-cover {
+    width: 250px;
+    height: 333px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 2px solid var(--color-text-light);
+}
+
+.modal-info {
+    flex-grow: 1;
+    text-align: left;
+}
+
+.modal-title {
+    font-family: 'Audiowide', cursive;
+    color: var(--color-text-light);
+    font-size: 3em;
+    margin-bottom: 15px;
+}
+
+.modal-genre, .modal-developer, .modal-release, .modal-description, .modal-price {
+    font-family: 'DM Mono', monospace;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.modal-description {
+    margin-top: 20px;
+    margin-bottom: 25px;
+    line-height: 1.5;
+    color: #ccc;
+}
+
+.modal-price {
+    font-size: 36px;
+    font-weight: bold;
+}
+
+.modal-btn-buy {
+    position: static;
+    transform: none;
+    margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+    .modal-content {
+        margin: 5% auto;
+    }
+    .modal-body {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .modal-info {
+        text-align: center;
+    }
+    .modal-game-cover {
+        width: 100%;
+        max-width: 250px;
+        height: auto;
+    }
+    .modal-title {
+        font-size: 2em;
     }
 }
