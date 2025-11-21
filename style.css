@@ -208,11 +208,8 @@ a:hover, button:hover, .game-card:hover, .catalog-item:hover {
 }
 
 .highlight {
-    
     font-weight: bold;
     color: red; 
-    
-
     animation: rgb-gradient-text 3s infinite linear; 
     -webkit-background-clip: text; 
     -webkit-text-fill-color: transparent; 
